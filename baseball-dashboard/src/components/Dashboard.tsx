@@ -19,7 +19,11 @@ const Dashboard = ({
 
   return (
     <div className="dashboard">
-      <button type="button" onClick={(): void => increaseStrikes(1)}>
+      <button
+        data-testid="strike-button"
+        type="button"
+        onClick={(): void => increaseStrikes(1)}
+      >
         Strike
       </button>
       <button type="button">Ball</button>

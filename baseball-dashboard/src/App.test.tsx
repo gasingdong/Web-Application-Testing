@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { render, getByTestId, getByText } from '@testing-library/react';
+import {
+  render,
+  getByTestId,
+  getByText,
+  fireEvent,
+} from '@testing-library/react';
 import '@testing-library/react/cleanup-after-each';
 import Dashboard from './components/Dashboard';
 import Display from './components/Display';
@@ -35,5 +40,20 @@ describe('display rendering', (): void => {
     const display = render(<Display />);
     expect(display.getByText(/strikes/i));
     expect(display.getByText(/balls/i));
+  });
+});
+
+describe('display functionality', (): void => {
+  it('strike button increases strike count by 1', (): void => {
+    const app = render(<App />);
+    const prevStrikes = app.getByTestId('strike-num').textContent;
+    fireEvent.click(app.getByTestId('strike-button'));
+    const strikes = app.getByTestId('strike-num').textContent;
+    expect(strikes).toBeDefined();
+    expect(prevStrikes).toBeDefined();
+
+    if (prevStrikes) {
+      expect(Number(strikes)).toBe(Number(prevStrikes) + 1);
+    }
   });
 });
