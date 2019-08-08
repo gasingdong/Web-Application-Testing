@@ -56,4 +56,17 @@ describe('display functionality', (): void => {
       expect(Number(strikes)).toBe(Number(prevStrikes) + 1);
     }
   });
+
+  it('ball button increases ball count by 1', (): void => {
+    const app = render(<App />);
+    const prevBalls = app.getByTestId('balls-num').textContent;
+    fireEvent.click(app.getByTestId('balls-button'));
+    const balls = app.getByTestId('balls-num').textContent;
+    expect(balls).toBeDefined();
+    expect(prevBalls).toBeDefined();
+
+    if (prevBalls) {
+      expect(Number(balls)).toBe(Number(prevBalls) + 1);
+    }
+  });
 });

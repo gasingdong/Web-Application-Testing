@@ -26,7 +26,9 @@ const Dashboard = ({
       >
         Strike
       </button>
-      <button type="button">Ball</button>
+      <button data-testid="balls-button" type="button">
+        Ball
+      </button>
       <button type="button">Foul</button>
       <button type="button">Hit</button>
     </div>
