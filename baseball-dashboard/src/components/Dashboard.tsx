@@ -13,12 +13,17 @@ const Dashboard = ({
   balls,
   setBalls,
 }: DashboardProps): React.ReactElement => {
+  const reset = (): void => {
+    setStrikes(0);
+    setBalls(0);
+  };
+
   const strike = (): void => {
-    setStrikes(strikes + 1);
+    strikes < 2 ? setStrikes(strikes + 1) : reset();
   };
 
   const ball = (): void => {
-    setBalls(balls + 1);
+    balls < 3 ? setBalls(balls + 1) : reset();
   };
 
   return (
