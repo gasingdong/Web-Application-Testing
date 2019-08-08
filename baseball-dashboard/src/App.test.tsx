@@ -12,16 +12,17 @@ it('renders without crashing', (): void => {
 
 describe('dashboard displays', (): void => {
   const dash = render(<Dashboard />);
-  it('has buttons for strike, ball, foul, hit', (): void => {
-    const buttons = dash.getAllByRole('button');
-    const types = ['strike', 'ball', 'foul', 'hit'];
+  const buttons = dash.getAllByRole('button');
+  const types = ['strike', 'ball', 'foul', 'hit'];
+  const hasType = (button: HTMLElement, index: number): boolean =>
+    button.textContent !== null &&
+    button.textContent.toUpperCase() === types[index].toUpperCase();
+  it('has 4 buttons for strike, ball, foul, hit', (): void => {
     expect(buttons).toHaveLength(4);
-    types.forEach((type): void => {
+    for (let i = 0; i < types.length; i++) {
       expect(
-        buttons.find((button): void => {
-          button.textContent === `/${type}/i`;
-        })
-      );
-    });
+        buttons.find((button): boolean => hasType(button, i))
+      ).toBeDefined();
+    }
   });
 });
