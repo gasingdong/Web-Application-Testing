@@ -13,6 +13,15 @@ it('renders without crashing', (): void => {
 describe('dashboard displays', (): void => {
   const dash = render(<Dashboard />);
   it('has buttons for strike, ball, foul, hit', (): void => {
-    expect(dash.getByText(/strike/i));
+    const buttons = dash.getAllByRole('button');
+    const types = ['strike', 'ball', 'foul', 'hit'];
+    expect(buttons).toHaveLength(4);
+    types.forEach((type): void => {
+      expect(
+        buttons.find((button): void => {
+          button.textContent === `/${type}/i`;
+        })
+      );
+    });
   });
 });
