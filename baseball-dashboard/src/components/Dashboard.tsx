@@ -26,6 +26,12 @@ const Dashboard = ({
     balls < 3 ? setBalls(balls + 1) : reset();
   };
 
+  const foul = (): void => {
+    if (strikes < 2) {
+      strike();
+    }
+  };
+
   return (
     <div className="dashboard">
       <button
@@ -42,8 +48,20 @@ const Dashboard = ({
       >
         Ball
       </button>
-      <button type="button">Foul</button>
-      <button type="button">Hit</button>
+      <button
+        data-testid="foul-button"
+        type="button"
+        onClick={(): void => foul()}
+      >
+        Foul
+      </button>
+      <button
+        data-testid="hit-button"
+        type="button"
+        onClick={(): void => reset()}
+      >
+        Hit
+      </button>
     </div>
   );
 };
