@@ -13,6 +13,6 @@ it('renders without crashing', (): void => {
 describe('dashboard displays', (): void => {
   const dash = render(<Dashboard />);
   it('has buttons for strike, ball, foul, hit', (): void => {
-    expect(dash.getByLabelText(/strike/i));
+    expect(dash.getByText(/strike/i));
   });
 });
