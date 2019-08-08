@@ -13,8 +13,12 @@ const Dashboard = ({
   balls,
   setBalls,
 }: DashboardProps): React.ReactElement => {
-  const increaseStrikes = (num: number): void => {
-    setStrikes(strikes + num);
+  const strike = (): void => {
+    setStrikes(strikes + 1);
+  };
+
+  const ball = (): void => {
+    setBalls(balls + 1);
   };
 
   return (
@@ -22,11 +26,15 @@ const Dashboard = ({
       <button
         data-testid="strike-button"
         type="button"
-        onClick={(): void => increaseStrikes(1)}
+        onClick={(): void => strike()}
       >
         Strike
       </button>
-      <button data-testid="balls-button" type="button">
+      <button
+        data-testid="balls-button"
+        type="button"
+        onClick={(): void => ball()}
+      >
         Ball
       </button>
       <button type="button">Foul</button>
