@@ -31,10 +31,9 @@ describe('dashboard displays', (): void => {
 });
 
 describe('display rendering', (): void => {
-  const display = render(<Display />);
-
   it('has 2 text labels for strike and ball', (): void => {
-    expect(display.getByText(/strike/i));
-    expect(display.getByText(/ball/i));
+    const display = render(<Display />);
+    expect(display.getByText(/strikes/i));
+    expect(display.getByText(/balls/i));
   });
 });
