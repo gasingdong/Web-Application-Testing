@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Display = (): React.ReactElement => {
+interface DisplayProps {
+  strikes: number;
+  balls: number;
+}
+
+const Display = ({ strikes, balls }: DisplayProps): React.ReactElement => {
   return (
     <div className="display">
-      <h1 data-testid="strikes">Strikes:</h1>
-      <h1 data-testid="balls">Balls:</h1>
+      <h1 data-testid="strikes">Strikes: {strikes}</h1>
+      <h1 data-testid="balls">Balls: {balls} </h1>
     </div>
   );
 };
